@@ -83,8 +83,10 @@
             <div class="skills_container body_grid">
                 <div>
                     <h2 class="skills_subtitle">Professional Skills</h2>
-                    <p class="skills_text">I have a strong foundation in web development and programming. My core skills include HTML, CSS, JavaScript, and Java. 
-    I focus on writing clean, efficient code and building responsive, user-friendly applications.</p>
+                    <p class="skills_text">I have a strong foundation in web development and programming. My core skills
+                        include HTML, CSS, JavaScript, and Java.
+                        I focus on writing clean, efficient code and building responsive, user-friendly applications.
+                    </p>
 
                     <div class="skills_data">
                         <div class="skills_names">
@@ -197,13 +199,30 @@
             <h2 class="section_title">Contact</h2>
 
             <div class="contact_container body_grid">
-                <form action="https://formsubmit.co/pandi.cse03@gmail.com" method="POST" class="contact_form">
+                <form action="https://formsubmit.co/pandi.cse03@gmail.com" method="POST" class="contact_form" >
                     <input type="text" placeholder="Name" class="contact_input" required>
-                    <input type="mail" placeholder="Email" class="contact_input" required>
-                    <textarea name="" id="" cols="0" rows="10" class="contact_input" required></textarea>
-                    <button type="submit" class="contact_button button" >Send</button>
+                    <input type="email" placeholder="Email" class="contact_input" required>
+                    <textarea name="message" id="" cols="0" rows="10" class="contact_input" required></textarea>
+                    <button type="submit" class="contact_button button">Send</button>
                 </form>
             </div>
+
+            <script>
+                (function () {
+                    emailjs.init("M-nkIHnqWsEN4G40T"); 
+                })();
+
+                document.getElementsByClassName("contact_form").addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    emailjs.sendForm("service_1ocimds", "template_h9s2wto", this)
+                        .then(function () {
+                            alert("Email sent successfully!");
+                        }, function (error) {
+                            alert("Failed: " + JSON.stringify(error));
+                        });
+                });
+            </script>
 
         </section>
     </main>
